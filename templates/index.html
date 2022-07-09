@@ -10,12 +10,12 @@
 {% for article in articles_page.object_list %}
 <article id="{{ article.slug }}" class="box post post-excerpt"{% if article.lang and DEFAULT_LANG != article.lang %} lang="{{article.lang}}"{% endif %}>
     {% include 'article_header.html' %}
-    {% if article.image %}
-    <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"><img class="featured" src="{{ article.image }}" alt="" {% if article.imageposition %}style="object-position: 50% {{article.imageposition}}" {% endif %}/></a>
+    {% if article.indeximage %}
+    <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"><img class="featured" src="{{ article.indeximage }}" alt="" {% if article.imageposition %}style="object-position: 50% {{article.imageposition}}" {% endif %}/></a>
     {% endif %}
     {% if article.summary %}
     {{ article.summary }}
-    {% if not article.image and article.imageposition %}
+    {% if not article.indeximage and article.imageposition %}
     <script>
         // http://codepen.io/chrisnager/pen/XJRRwo?editors=110
         // We use vanilla js here because jQuery is not loaded yet
