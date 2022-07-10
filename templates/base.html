@@ -6,7 +6,13 @@
   -->
 <html lang="{{ DEFAULT_LANG }}">
     <head>
+        {% if (article and article.photo_gallery) or (articles_page and articles_page.object_list[0].photo_gallery) %}
+        <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/magnific-popup.css">
+        {% endif %}
+
         {% block head %}
+
+
         <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -26,9 +32,9 @@
         {% if FEED_RSS %}
         <link href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
         {% endif %}
-        {% if CATEGORY_FEED_ATOM and category %}
-        <link href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_ATOM|format(category.slug) }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Categories Atom Feed" />
-        {% endif %}
+
+
+        
         {% if CATEGORY_FEED_RSS and category %}
         <link href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_RSS|format(category.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Categories RSS Feed" />
         {% endif %}
@@ -255,5 +261,34 @@
         <script src="{{ SITEURL }}/theme/assets/js/main.js"></script>
         {% block script_hooks %}{% endblock %}
         {% include 'analytics.html' %}
+        
+        {% if (article and article.photo_gallery) or (articles_page and articles_page.object_list[0].photo_gallery) %}
+        <!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        
+        <!-- Magnific Popup core JS file -->
+        <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/magnific-popup.js"></script>
+        <script>
+        $('.gallery').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+            gallery: {
+                enabled: true,
+                navigateByImgClick: true,
+                preload: [1,2]
+            },
+            image: {
+                titleSrc: function(item) {
+                    if (item.el.attr('caption') && item.el.attr('exif')) {
+                        return (item.el.attr('caption').replace(/\\n/g, '<br />') +
+                            '<small>' + item.el.attr('title') + ' - ' + item.el.attr('exif') + '</small>');
+                    }
+                return item.el.attr('title') + '<small>' + item.el.attr('exif') + '</small>';
+            } }
+        });
+        </script>
+        {% endif %}
+
+
     </body>
 </html>

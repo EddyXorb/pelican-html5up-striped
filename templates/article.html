@@ -35,33 +35,24 @@
         <script id="dsq-count-scr" src="//{{ DISQUS_SITENAME }}.disqus.com/count.js" async></script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
     {% endif %}
+
+    {% if article.photo_gallery %}
+    <!-- >>>> Start >>>>> PHOTO plugin: article gallery >>>>>>>>> -->
+    {% if article.photo_gallery %}
+    <div class="gallery">
+      {% for title, gallery in article.photo_gallery %}
+      <h1>{{ title }}</h1>
+      {% for name, photo, thumb, exif, caption in gallery %}
+      <a href="{{ SITEURL }}/{{ photo }}" title="{{ name }}" exif="{{ exif }}" caption="{{ caption }}"><img
+          src="{{ SITEURL }}/{{ thumb }}"></a>
+      {% endfor %}
+      {% endfor %}
+    </div>
+    {% endif %}
+    <!-- <<<< End <<<<< PHOTO plugin: article gallery <<<<<<<<< -->
+    {% endif %}
+
 </article>
 {% endblock %}
 
-{% block script_hooks %}
-<script>
-$("article img").each(function() {
-  $(this).load(function() {
-    var imgWidth = $(this).width();
-    var imgHeight = $(this).height();
-    if (imgHeight > imgWidth) {
-      $(this).css({
-        "width": "60%",
-        "margin": "0 auto"
-      });
-    }
-    //var imageCaption = $(this).attr("alt");
-    //if (imageCaption != '') {
-    //  // display image caption on top of image
-    //  imgWidth = imgWidth - 5;
-    //  var positionTop = imgHeight - 26;
-    //  $("<span class='img-caption'>" + imageCaption + "</span>").css({
-    //      "top": positionTop + "px",
-    //      "width": imgWidth + "px"
-    //  }).insertAfter(this);
-    //}
-  });
-  if (this.complete) $(this).trigger("load");
-});
-</script>
-{% endblock %}
+
