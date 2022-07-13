@@ -12,7 +12,7 @@
     {% include 'article_header.html' %}
     
     {% if article.indeximage %}
-    <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"><img class="featured" src="{{ article.indeximage }}" alt="" {% if article.imageposition %}style="object-position: 50% {{article.imageposition}}" {% endif %}/></a>
+    <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"><img class="featured" src="{{SITEURL}}/{{ article.indeximage }}" alt="" {% if article.imageposition %}style="object-position: 50% {{article.imageposition}}" {% endif %}/></a>
     {% endif %}
 
     {% if article.summary %}
