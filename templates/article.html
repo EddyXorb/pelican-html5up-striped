@@ -11,48 +11,46 @@
 {% endblock %}
 
 {% block content %}
-<article class="box post post-excerpt"{% if article.lang and DEFAULT_LANG != article.lang %} lang="{{article.lang}}"{% endif %}>
-    {% include 'article_header.html' %}
+<article class="box post post-excerpt" {% if article.lang and DEFAULT_LANG !=article.lang %} lang="{{article.lang}}" {%
+  endif %}>
+  {% include 'article_header.html' %}
 
-    {{ article.content }}
+  {{ article.content }}
 
-    {% if DISQUS_SITENAME and SITEURL and article.status != "draft" %}
-        <h3>Comments</h3>
-        <div id="disqus_thread"></div>
-        <script>
-            var disqus_config = function () {
-              this.page.url = '{{ SITEURL }}/{{ article.url }}';
-              this.page.identifier = '{{ article.url }}';
-            };
-            (function() {
-              var d = document, s = d.createElement('script');
-              s.src = '//{{ DISQUS_SITENAME }}.disqus.com/embed.js';
-              s.setAttribute('data-timestamp', +new Date());
-              s.async = true;
-              (d.head || d.body).appendChild(s);
-            })();
-        </script>
-        <script id="dsq-count-scr" src="//{{ DISQUS_SITENAME }}.disqus.com/count.js" async></script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-    {% endif %}
-
-    {% if article.photo_gallery %}
-    <!-- >>>> Start >>>>> PHOTO plugin: article gallery >>>>>>>>> -->
-    {% if article.photo_gallery %}
-    <div class="gallery">
-      {% for title, gallery in article.photo_gallery %}
-      <h1>{{ title }}</h1>
-      {% for name, photo, thumb, exif, caption in gallery %}
-      <a href="{{ SITEURL }}/{{ photo }}" title="{{ name }}" exif="{{ exif }}" caption="{{ caption }}"><img
-          src="{{ SITEURL }}/{{ thumb }}"></a>
-      {% endfor %}
-      {% endfor %}
-    </div>
-    {% endif %}
-    <!-- <<<< End <<<<< PHOTO plugin: article gallery <<<<<<<<< -->
-    {% endif %}
+  {% if DISQUS_SITENAME and SITEURL and article.status != "draft" %}
+  <h3>Comments</h3>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = '{{ SITEURL }}/{{ article.url }}';
+      this.page.identifier = '{{ article.url }}';
+    };
+    (function () {
+      var d = document, s = d.createElement('script');
+      s.src = '//{{ DISQUS_SITENAME }}.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      s.async = true;
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <script id="dsq-count-scr" src="//{{ DISQUS_SITENAME }}.disqus.com/count.js" async></script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+      powered by Disqus.</a></noscript>
+  {% endif %}
 
 </article>
+
+<!-- >>>> Start >>>>> PHOTO plugin: article gallery >>>>>>>>> -->
+{% if article.photo_gallery %}
+<div class="gallery">
+  {% for title, gallery in article.photo_gallery %}
+  <h1>{{ title }}</h1>
+  {% for name, photo, thumb, exif, caption in gallery %}
+  <a href="{{ SITEURL }}/{{ photo }}" title="{{ name }}" exif="{{ exif }}" caption="{{ caption }}"><img
+      src="{{ SITEURL }}/{{ thumb }}"></a>
+  {% endfor %}
+  {% endfor %}
+</div>
+{% endif %}
+<!-- <<<< End <<<<< PHOTO plugin: article gallery <<<<<<<<< -->
 {% endblock %}
-
-
