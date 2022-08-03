@@ -13,7 +13,10 @@
 {% block content %}
 <article class="box post post-excerpt" {% if article.lang and DEFAULT_LANG !=article.lang %} lang="{{article.lang}}" {%
   endif %}>
+  
   {% include 'article_header.html' %}
+  
+  {% include 'article_tracks.html' %}
 
   {{ article.content }}
 
@@ -53,4 +56,6 @@
 </div>
 {% endif %}
 <!-- <<<< End <<<<< PHOTO plugin: article gallery <<<<<<<<< -->
+
+
 {% endblock %}
