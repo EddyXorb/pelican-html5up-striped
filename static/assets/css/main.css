@@ -1336,7 +1336,7 @@ article {
     max-width: 100%; }
     article img.featured {
       margin: 0 0 2em 0;
-      max-height: 400px;
+      max-height: 1080px;
       object-fit: cover;
       width: 100%; }
     article img.left {
