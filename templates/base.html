@@ -244,26 +244,30 @@
             </section>
             {% endif %}
 
-            
-
-            
             <!-- Copyright -->
             <ul id="copyright">
                 <li>&copy; {{ COPYRIGHT }}</li>
                 <li>Powered by <a href="http://getpelican.com/">Pelican</a></li>
                 <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
             </ul>
-            
-            <ul id="zaehler"> <p>Wir hatten heute schon <span class="BZheute"></span> Besucher.
+        
+        <!-- this works only if the besucherzaehler-kostenlos works -->
+        <ul id="besucherzaehler"> <p>Wir hatten heute schon <span class="BZheute"></span> Besucher.
                 <span class="BZonline"></span> davon sind gerade online.
                 Gestern waren es <span class="BZgestern"></span>!
                 Und seit dem <span class="BZseit"></span>
-                waren es ganze <span class="BZgesamt"></span>.</p></ul>
-
+                waren es ganze <span class="BZgesamt"></span>.</p></ul>  
         </div>
         
         <!-- Scripts -->
-        <script language="JavaScript" src="https://www.besucherzaehler-kostenlos.de/js/counter.js.php?count=1&id=rohlnet.deusa2022&start=0&design=6"></script>
+
+        <!-- Got to https://roehlnet.goatcounter.com/ to view stats -->
+        <script data-goatcounter="https://roehlnet.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+        <!-- this does not seem to work anymore -->
+        <script language="JavaScript" src="https://www.besucherzaehler-kostenlos.de/js/counter.js.php?count=1&id=roehlnet.deusa2022&start=2000&design=6"></script>
+
         <script src="{{ SITEURL }}/theme/assets/js/jquery.min.js"></script>
         <script src="{{ SITEURL }}/theme/assets/js/skel.min.js"></script>
         <script src="{{ SITEURL }}/theme/assets/js/util.js"></script>
@@ -300,7 +304,6 @@
         {% endif %}
 
         <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/gpxviewer/GPX2GM.js"></script>
-
 
     </body>
 </html>
