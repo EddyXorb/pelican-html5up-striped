@@ -1315,7 +1315,7 @@ header {
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 300;
     display: block;
-    margin-top: 1em;
+    margin-top: 0.5em;
     color: #999; }
 
 section, article {
@@ -1921,14 +1921,14 @@ article > ol {
     font-size: 3.25em;
     line-height: 1.25em; }
   .box.post header {
-    padding: 2.75em 0 0 0;
-    margin: 0 0 3em 0; }
+    padding: 0 0 0 0;
+    margin: 0 0 2em 0; }
     .box.post header > p {
       font-size: 2.25em;
       line-height: 1.5em;
       position: relative;
-      top: -0.65em;
-      margin-bottom: -0.65em; }
+      top: 0em;
+      margin-bottom: 0em; }
   .box.post .info {
     position: absolute;
     width: 5.5em;
@@ -2011,13 +2011,13 @@ article > ol {
       font-size: 1.75em;
       line-height: 1.5em;
       position: relative;
-      top: -0.75em;
+      top: 0em;
       margin-bottom: -0.75em; }
   .box.post .info {
     width: 100%;
     padding: 1em 0 0 0;
     position: relative;
-    top: -2em; }
+    top: 0em; }
     .box.post .info .date {
       display: inline; }
     .box.post .info .stats {

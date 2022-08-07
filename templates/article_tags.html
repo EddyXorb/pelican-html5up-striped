@@ -1,0 +1,15 @@
+ <!-- Autoren -->
+ {% if article.authors %}
+ <address class="author">
+     Von {% for author in article.authors %}
+     <a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
+     {% endfor %}
+ </address>
+ {% endif %}
+ <!-- Tags -->
+ <div>
+     <i class="fa fa-folder"></i>&nbsp;<a class="folder" href="{{ SITEURL }}/{{ article.category.url }}">{{
+         article.category }}</a>
+     {% if article.tags %}<i class="fa fa-tags"></i>&nbsp;{% for tag in article.tags %}<span class="tag"><a
+             href="{{ SITEURL }}/{{ tag.url }}">{{ tag | escape }}</a></span> {% endfor %}{% endif %}
+ </div>
